@@ -6,7 +6,7 @@ pub mod jupiter_override {
     use super::Side;
     use super::SplitLeg;
     use anchor_lang::prelude::*;
-    use anchor_lang::{AnchorSerialize, InstructionData};
+    use anchor_lang::{AnchorSerialize, AnchorDeserialize, InstructionData};
     use std::io::Write;
 
     #[derive(AnchorSerialize)]
@@ -57,7 +57,7 @@ pub mod jupiter_override {
         }
     }
 
-    #[derive(AnchorSerialize)]
+    #[derive(AnchorSerialize, AnchorDeserialize)]
     pub struct Route {
         pub swap_leg: SwapLeg,
         pub in_amount: u64,
